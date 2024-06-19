@@ -2,6 +2,7 @@ package com.llds.service;
 
 import com.llds.pojo.Emp;
 import com.llds.pojo.PageBean;
+import com.llds.pojo.Result;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,6 +13,12 @@ public interface EmpService {
      *用户登录
      */
     public Emp login(Emp emp);
+
+    /**
+     *用户注册
+     */
+    public Result register(Emp emp);
+
 
 
     /**
@@ -32,4 +39,5 @@ public interface EmpService {
      *删除员工
      */
     void delete(List<Integer> ids);
+
 }

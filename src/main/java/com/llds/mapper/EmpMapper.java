@@ -3,6 +3,7 @@ package com.llds.mapper;
 import com.llds.pojo.Emp;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.time.LocalDate;
@@ -28,15 +29,16 @@ public interface EmpMapper {
     void delete(List<Integer> ids);
 
 
-//    登录
+    //    登录
     @Select("select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time " +
             "from emp " +
             "where username=#{username} and password =#{password}")
-    public Emp getByUsernameAndPassword(Emp emp);
+    Emp getByUsernameAndPassword(Emp emp);
 
-//    注册
+    @Select("SELECT * FROM emp WHERE username = #{username}")
+    Emp findByUsername(@Param("username") String username);
+
+    //    注册
     @Insert("INSERT INTO emp (username, password, create_time, update_time) VALUES (#{username}, #{password}, #{createTime}, #{updateTime})")
     int insertEmp(Emp emp);
-
-
 }

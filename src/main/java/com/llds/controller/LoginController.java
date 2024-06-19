@@ -26,7 +26,7 @@ public class LoginController {
     @PostMapping("/login")
     public Result login(@RequestBody Emp emp){
         log.info("用户名:{}",emp.getUsername());
-        Emp e = empService.login(emp);
+        Emp e = empService.login(emp); // 返回值为员工信息
         //登录成功,生成jwt令牌，下发给客户端
         if(e !=null ){
             //自定义信息
